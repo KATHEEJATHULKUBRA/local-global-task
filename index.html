@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor,Inheritance & Extends</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            color: #ea8aa5;
+        }
+        h3{
+            color: maroon;
+        }
+        .animal, .dog {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #db87ad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+           border: 1px solid #db87ad;
+            color: #db87ad;
+            background: #fff;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Constructors, Inheritance & Extends keywords</h2>
+
+    <div class="animal">
+        <h3>Animal</h3>
+        <p id="animal-sound"></p>
+    </div>
+
+    <div class="dog">
+        <h3>Dog</h3>
+        <p id="dog-sound"></p>
+        <p id="dog-breed"></p>
+    </div>
+
+    <button onclick="showSounds()">Show Sounds</button>
+
+    <script>
+    
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+            makeSound() {
+                return `${this.name} makes a sound.`;
+            }
+        }
+
+       
+        class Dog extends Animal {
+            constructor(name, breed) {
+                super(name); 
+                this.breed = breed;
+            }
+
+            makeSound() {
+                return `${this.name} barks.`;
+            }
+        }
+
+        const genericAnimal = new Animal('Generic Animal');
+        const myDog = new Dog('Rex', 'Golden Retriever');
+
+        function showSounds() {
+            document.getElementById('animal-sound').innerText = genericAnimal.makeSound();
+            document.getElementById('dog-sound').innerText = myDog.makeSound();
+            document.getElementById('dog-breed').innerText = `${myDog.name} is a ${myDog.breed}.`;
+        }
+    </script>
+
+</body>
+</html>
